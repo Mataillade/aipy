@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "aipy"
+version = "0.0.0"
+description = ""
+authors = ["Matias Taillade", "Rémi Mandart", "Wylhem Dorville"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.scripts]
+runserver = "main:main"
+
+[tool.poetry.dependencies]
+python = "~3.10"
+fastapi = "*"
+numpy = "*"
+pandas = "*"
+pyarrow = "*"
+pydantic = "*"
+tensorflow = { version = "*", markers = "sys_platform != 'darwin'" }
+tensorflow-macos = { version = "*", markers = "sys_platform == 'darwin'" }
+tensorflow-metal = { version = "*", markers = "sys_platform == 'darwin'" }
+uvicorn = "*"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "*"
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.ruff.lint]
+extend-select = ["F", "I", "N"]
+fixable = ["ALL"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
