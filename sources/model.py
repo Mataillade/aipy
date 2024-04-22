@@ -71,7 +71,7 @@ class ModelService:
             temperature=0.7,
             n=1,
         )
-        return completion.choices[0].message.content
+        return completion.choices[0].message.content.strip('"')
 
     def __create_model(self) -> Pipeline:
         dataframe = pandas.read_csv(self.training_data_path)
