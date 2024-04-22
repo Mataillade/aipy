@@ -3,8 +3,8 @@ from io import BytesIO
 import pandas
 from fastapi import FastAPI, HTTPException, UploadFile
 
-from sources.model import ModelService
-from sources.schemas import PredictionSchema, PredictSchema
+from sources.model import Emotion, ModelService
+from sources.schemas import GenerationSchema, PredictionSchema, PredictSchema
 
 app = FastAPI()
 model_service = ModelService()
@@ -27,8 +27,9 @@ async def predict(schema: PredictSchema) -> PredictionSchema:
 
 
 @app.get("/model")
-async def model():
-    pass
+async def model(emotion: Emotion = Emotion.POSITIVE) -> GenerationSchema:
+    message = await model_service.generate(emotion)
+    return GenerationSchema(message=message)
 
 
 def main():

@@ -30,6 +30,7 @@ ruff = "*"
 [tool.ruff]
 line-length = 88
 indent-width = 4
+extend-include = ["*.ipynb"]
 
 [tool.ruff.format]
 quote-style = "double"
