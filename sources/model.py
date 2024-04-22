@@ -14,7 +14,6 @@ from sklearn.svm import SVC
 
 class Emotion(str, Enum):
     POSITIVE = "positive"
-    NEUTRAL = "neutral"
     NEGATIVE = "negative"
 
 
@@ -46,15 +45,15 @@ class ModelService:
         model = Pipeline(
             [
                 ("tfidf", TfidfVectorizer()),
-                ("svc", SVC()),
+                ("svc", SVC(class_weight='balanced')),
             ]
         )
         self.__train(model, dataframe)
         return model
 
     def __train(self, model: Pipeline, dataframe: DataFrame):
-        x = dataframe["text"]
-        y = dataframe["airline_sentiment"]
+        x = dataframe[dataframe['airline_sentiment'] != 'neutral']['text']
+        y = dataframe[dataframe['airline_sentiment'] != 'neutral']['airline_sentiment']
         x_train, x_test, y_train, y_test = train_test_split(
             x,
             y,
