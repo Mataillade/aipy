@@ -12,16 +12,22 @@ runserver = "main:main"
 [tool.poetry.dependencies]
 python = "~3.10"
 fastapi = "*"
+joblib = "*"
 numpy = "*"
 pandas = "*"
 pyarrow = "*"
 pydantic = "*"
+python-multipart = "*"
+scikit-learn = "*"
+seaborn = "*"
 tensorflow = { version = "*", markers = "sys_platform != 'darwin'" }
-tensorflow-macos = { version = "*", markers = "sys_platform == 'darwin'" }
+tensorflow-macos = { version = "2.15.0", markers = "sys_platform == 'darwin'" }
 tensorflow-metal = { version = "*", markers = "sys_platform == 'darwin'" }
 uvicorn = "*"
+wordcloud = "*"
 
 [tool.poetry.group.dev.dependencies]
+jupyter = "*"
 ruff = "*"
 
 [tool.ruff]

@@ -1,4 +1,4 @@
-before_commit: check requirements lint
+before_commit: check lint requirements
 
 check:
 	poetry check
@@ -6,9 +6,9 @@ check:
 install:
 	poetry install --sync
 
-requirements: install
-	poetry export --without-hashes -f requirements.txt --output requirements.txt
-
 lint:
 	ruff format
 	ruff check --fix
+
+requirements: install
+	poetry export --without-hashes -f requirements.txt --output requirements.txt
