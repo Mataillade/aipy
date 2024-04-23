@@ -9,6 +9,7 @@ package-mode = false
 [tool.poetry.dependencies]
 python = "^3.12"
 fastapi = "*"
+httpx = "*"
 joblib = "*"
 matplotlib = "*"
 numpy = "*"
@@ -20,6 +21,7 @@ pydantic-settings = "*"
 python-multipart = "*"
 scikit-learn = "*"
 seaborn = "*"
+streamlit = "^1.33.0"
 uvicorn = "*"
 wordcloud = "*"
 
